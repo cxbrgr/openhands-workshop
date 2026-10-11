@@ -188,3 +188,49 @@ body {
     animation: none;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Rocket: trails the pointer across the background                    */
+/* ------------------------------------------------------------------ */
+
+.rocket-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: -5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.rocket-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  filter: drop-shadow(0 0 12px rgba(255, 170, 60, 0.55));
+}
+
+.rocket-flame {
+  transform-box: fill-box;
+  transform-origin: right center;
+  animation: rocket-flame 0.16s ease-in-out infinite alternate;
+}
+
+@keyframes rocket-flame {
+  from {
+    transform: scaleX(0.75) scaleY(0.92);
+    opacity: 0.85;
+  }
+  to {
+    transform: scaleX(1.2) scaleY(1.08);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocket-flame {
+    animation: none;
+  }
+}
